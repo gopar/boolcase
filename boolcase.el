@@ -48,12 +48,8 @@
       (boolcase-mode-fix)))
 
 (defun boolcase-mode-fix ()
-  (save-excursion
-    (copy-region-as-kill (point) (progn (backward-sexp) (point)))
-    (when (member (current-kill 0) boolcase-mode-words)
-      (capitalize-word 1)))
-  ;; Remove element we just saved to kill-ring
-  (setq kill-ring (cdr kill-ring)))
+  (when (member (thing-at-point 'word) boolcase-mode-words)
+    (capitalize-word -1)))
 
 ;;;###autoload
 (define-minor-mode boolcase-mode
