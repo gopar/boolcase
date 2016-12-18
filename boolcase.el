@@ -61,6 +61,6 @@
     (remove-hook 'post-self-insert-hook
                  'boolcase-mode-check t)))
 
-(provide 'boolcase-mode)
+(provide 'boolcase)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; boolcase.el ends here
