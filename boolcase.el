@@ -48,8 +48,11 @@
       (boolcase-mode-fix)))
 
 (defun boolcase-mode-fix ()
-  (when (member (thing-at-point 'word) boolcase-mode-words)
-    (capitalize-word -1)))
+  (let ((table (make-syntax-table)))
+    (modify-syntax-entry ?_ "w" table)
+    (with-syntax-table table
+      (when (member (thing-at-point 'word) boolcase-mode-words)
+        (capitalize-word -1)))))
 
 ;;;###autoload
 (define-minor-mode boolcase-mode
